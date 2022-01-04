@@ -1,6 +1,6 @@
 {
   "name": "update-test",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "测试自动更新",
   "main": "./dist/electron/main.js",
   "scripts": {
@@ -41,6 +41,7 @@
         "owner": "BingKui",
         "repo": "update-test",
         "private": false,
+		"token": "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",
         "releaseType": "release"
       }
     ],
