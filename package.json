@@ -40,8 +40,6 @@
         "provider": "github",
         "owner": "BingKui",
         "repo": "update-test",
-        "private": false,
-	"token": "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",
         "releaseType": "release"
       }
     ],
