@@ -43,7 +43,7 @@ jobs:
         run: |
           npm run pack
         env:
-          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
  
       - name: 上传构建产物
         uses: LabhanshAgrawal/upload-artifact@v3
