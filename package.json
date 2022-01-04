@@ -39,7 +39,7 @@
       {
         "provider": "github",
         "owner": "BingKui",
-        "repo": "https://github.com/BingKui/update-test",
+        "repo": "update-test",
         "private": false,
         "releaseType": "release"
       }
