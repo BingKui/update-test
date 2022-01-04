@@ -1,5 +1,6 @@
 // 主程序相关方法
-import { app, BrowserWindow, ipcMain, Menu, Tray, autoUpdater, globalShortcut } from 'electron';
+import { app, BrowserWindow, ipcMain, Menu, Tray, globalShortcut } from 'electron';
+import { autoUpdater } from 'electron-updater';
 const { port, host } = require('../electron/config');
 import { BASE_SETTING, PLATFORM_VALUE, UPDATE_URL, UPDATE_MESSAGE } from '@constants/common';
 import { ACTION_KEY, ACTION_RESULT, UPDATE_MESSAGE_TYPE } from '@constants/channel';
@@ -236,7 +237,7 @@ export const AddAppUpdate = (mainWindow) => {
         mainWindow.webContents.send(ACTION_KEY.updateMessage, info);
     };
     // 设置更新地址
-    autoUpdater.setFeedURL(UPDATE_URL);
+    // autoUpdater.setFeedURL(UPDATE_URL);
     autoUpdater.autoDownload = false;
     autoUpdater.autoInstallOnAppQuit = true;
     // 添加时间监听
