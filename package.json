@@ -41,7 +41,6 @@
         "owner": "BingKui",
         "repo": "https://github.com/BingKui/update-test",
         "private": false,
-        "token": "",
         "releaseType": "release"
       }
     ],
