@@ -23,7 +23,7 @@ jobs:
       matrix:
         os:
           - macos-latest
-          - windows-10
+          - windows-latest
     # create steps
     steps:
       # step1: check out repository
@@ -41,13 +41,14 @@ jobs:
       # step4: build app for mac/win
       - name: 打包应用
         uses: samuelmeuli/action-electron-builder@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          mac_certs: ${{ secrets.mac_certs }}
+          mac_certs_password: ${{ secrets.mac_certs_password }}
         # run: |
         #   npm run pack
         # env:
         #   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          mac_certs: ${{ secrets.mac_certs }}
-          mac_certs_password: ${{ secrets.mac_certs_password }}
  
       - name: 上传构建产物
         uses: LabhanshAgrawal/upload-artifact@v3
