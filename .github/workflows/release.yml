@@ -38,32 +38,12 @@ jobs:
       - name: npm install
         run: |
           npm install
-      # step3: npm install
-      - name: 输出参数
-        run: |
-          echo env
-        env:
-          mac_certs: ${{ secrets.MAC_CERTS }}
-          mac_certs_password: ${{ secrets.MAC_CERTS_PASSWORD }}
       # step4: build app for mac/win
-      - name: 打包应用（macOS）
-        if: startsWith(matrix.os, 'macos')
+      - name: 打包应用
         run: |
           npm run pack
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          CSC_LINK: ${{ secrets.MAC_CERTS }}
-          CSC_KEY_PASSWORD: ${{ secrets.MAC_CERTS_PASSWORD }}
-          CSC_NAME: ${{ secrets.MAC_CERTS_NAME }}
-          CSC_IDENTITY_AUTO_DISCOVERY: true
-          CSC_KEYCHAIN: ${{ secrets.MAC_KEYCHAIN }}
-      
-      - name: 打包应用（Windows）
-        if: startsWith(matrix.os, 'windows')
-        run: |
-          npm run pack
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
  
       - name: 上传构建产物
         uses: LabhanshAgrawal/upload-artifact@v3
@@ -72,8 +52,6 @@ jobs:
             dist/*.dmg
             dist/*.exe
             dist/*.zip
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: 发布 Release
         uses: softprops/action-gh-release@v1
         if: startsWith(github.ref, 'refs/tags/')
@@ -85,4 +63,4 @@ jobs:
             dist/latest.yml
             dist/latest-mac.yml
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
