@@ -40,10 +40,14 @@ jobs:
           npm install
       # step4: build app for mac/win
       - name: 打包应用
-        run: |
-          npm run pack
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        uses: samuelmeuli/action-electron-builder@v1
+        # run: |
+        #   npm run pack
+        # env:
+        #   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          mac_certs: ${{ secrets.mac_certs }}
+          mac_certs_password: ${{ secrets.mac_certs_password }}
  
       - name: 上传构建产物
         uses: LabhanshAgrawal/upload-artifact@v3
