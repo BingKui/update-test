@@ -1,6 +1,6 @@
 {
   "name": "update-test",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "测试自动更新",
   "main": "./dist/electron/main.js",
   "scripts": {
