@@ -41,24 +41,22 @@ jobs:
       # step3: npm install
       - name: 输出参数
         run: |
-          echo mac_certs
+          echo env
         env:
           mac_certs: ${{ secrets.MAC_CERTS }}
           mac_certs_password: ${{ secrets.MAC_CERTS_PASSWORD }}
       # step4: build app for mac/win
       - name: 打包应用（macOS）
         if: startsWith(matrix.os, 'macos')
-        # uses: samuelmeuli/action-electron-builder@v1.6.0
-        # with:
-        #   github_token: ${{ secrets.GITHUB_TOKEN }}
-        #   mac_certs: ${{ secrets.MAC_CERTS }}
-        #   mac_certs_password: ${{ secrets.MAC_CERTS_PASSWORD }}
         run: |
           npm run pack
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           CSC_LINK: ${{ secrets.MAC_CERTS }}
           CSC_KEY_PASSWORD: ${{ secrets.MAC_CERTS_PASSWORD }}
+          CSC_NAME: ${{ secrets.MAC_CERTS_NAME }}
+          CSC_IDENTITY_AUTO_DISCOVERY: true
+          CSC_KEYCHAIN: ${{ secrets.MAC_KEYCHAIN }}
       
       - name: 打包应用（Windows）
         if: startsWith(matrix.os, 'windows')
