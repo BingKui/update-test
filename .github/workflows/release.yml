@@ -23,7 +23,7 @@ jobs:
       matrix:
         os:
           - macos-latest
-          - windows-latest
+          - windows-10
     # create steps
     steps:
       # step1: check out repository
